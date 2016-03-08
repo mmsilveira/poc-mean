@@ -1,4 +1,3 @@
-// public/js/controllers/ContatoController.js
 angular.module('contatooh')
 .controller('ContatoController',
 function($scope, $routeParams, Contato) {
@@ -28,5 +27,9 @@ function($scope, $routeParams, Contato) {
         .catch(function(erro) {
             $scope.mensagem = {texto: 'Não foi possível salvar.'};
         });
-    }
+    };
+
+    Contato.query(function(contatos) {
+        $scope.contatos = contatos;
+    });
 });

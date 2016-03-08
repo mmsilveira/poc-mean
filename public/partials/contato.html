@@ -1,4 +1,3 @@
-<!-- public/partials/contato.html -->
 <h1 class="text-center">Contato</h1>
 <p ng-show="mensagem.texto">
     {{mensagem.texto}}
@@ -16,6 +15,14 @@
             <input type="email" class="form-control" id="email" name="email"
             placeholder="email@exemplo.com" ng-model="contato.email" required>
         </div>
+    </div>
+    <div class="form-group">
+        <label for="emergencia">Emergência</label>
+        <select id="emergencia" class="form-control" name="emergencia"
+                ng-model="contato.emergencia"
+                ng-options="contato._id as contato.nome for contato in contatos">
+
+        </select>
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Salvar</button>
