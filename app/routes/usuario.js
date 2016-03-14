@@ -18,7 +18,11 @@ module.exports = function(app) {
     app.route('/login')
     .post(passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
-        console.log('===== rota');
+        res.redirect('/');
+    });
+
+    app.route('/logout').get(function(req, res) {
+        req.logOut();
         res.redirect('/');
     });
 };

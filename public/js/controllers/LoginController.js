@@ -2,8 +2,13 @@ angular.module('contatooh')
 .controller('LoginController',
 function($http, $scope, $routeParams, $location, Login) {
 
+    $scope.model = {
+        email: "",
+        password: ""
+    };
+
     $scope.login = function() {
-        $http.post('/login', {email: 'teste@teste.com', password: '123456'})
+        $http.post('/login', $scope.model)
         .then(function(res) {
             $scope.email = res;
             $location.path('/contatos');

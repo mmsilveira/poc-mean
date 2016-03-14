@@ -1,2 +1,6 @@
 node_modules
 public/vendor
+dist
+.tmp
+
+.sublime-project
