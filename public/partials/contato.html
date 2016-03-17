@@ -1,31 +1,27 @@
-<h1 class="text-center">Contato</h1>
+<div>
+    <h4 class="mdl-typography--display-1">Contato</h4>
+</div>
 <p ng-show="mensagem.texto">
     {{mensagem.texto}}
 </p>
-<form ng-submit="salva()">
-    <div class="form-group">
-        <label for="nome">Nome completo</label>
-        <input type="text" class="form-control" id="nome" name="nome"
-        ng-model="contato.nome" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <div class="input-group">
-            <span class="input-group-addon">@</span>
-            <input type="email" class="form-control" id="email" name="email"
-            placeholder="email@exemplo.com" ng-model="contato.email" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="emergencia">Emergência</label>
-        <select id="emergencia" class="form-control" name="emergencia"
-                ng-model="contato.emergencia"
-                ng-options="contato._id as contato.nome for contato in contatos">
 
-        </select>
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="#/" class="btn btn-primary">Voltar</a>
-    </div>
-</form>
+<div class="form-contato-card mdl-card mdl-shadow--2dp">
+    <form ng-submit="salva()">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input type="text" class="mdl-textfield__input" id="nome" name="nome" ng-model="contato.nome" required>
+            <label class="mdl-textfield__label" for="nome">Nome completo</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input type="email" class="mdl-textfield__input" id="email" name="email" ng-model="contato.email" required>
+            <label class="mdl-textfield__label" for="email">Email</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <select id="emergencia" class="mdl-textfield__input" name="emergencia" ng-model="contato.emergencia" ng-options="contato._id as contato.nome for contato in contatos"></select>
+            <label class="mdl-textfield__label" for="emergencia">Emergência</label>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="#/" class="btn btn-primary">Voltar</a>
+        </div>
+    </form>
+</div>

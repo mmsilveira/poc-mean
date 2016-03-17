@@ -1,39 +1,55 @@
 <!-- public/partials/contatos.html -->
-<div class="jumbotron">
-    <h1 class="text-center">Bem vindo ao Contatooh</h1>
+<div>
+    <h4 class="mdl-typography--display-1">Bem vindo ao Contatooh</h4>
 </div>
 <p ng-show="mensagem.texto">
     {{mensagem.texto}}
 </p>
-<a ng-href="#/contato" class="btn btn-primary">Novo Contato</a>
-<input ng-model="filtro" type="search" placeholder="parte do nome">
-<p class="text-info" ng-show="contatos.length">
-    Contatos cadastrados: {{contatos.length}}
-</p>
-<p class="text-info" ng-hide="contatos.length">
-    Não há contatos cadastrados.
-</p>
-<div class="table-responsive">
-    <table class="table table-hover">
-        <tr>
-            <th>NOME</th>
-            <th>E-MAIL</th>
-            <th>Emergência</th>
-            <th class="text-center">Ação</th>
-        </tr>
-        <tr ng-repeat="contato in contatos | filter: filtro">
-            <td>
-                <a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
-            </td>
-            <td>
-                {{contato.email}}
-            </td>
-            <td>
-                {{contato.emergencia.nome}}
-            </td>
-            <td class="text-center">
-                <button class="btn btn-warning" ng-click="remove(contato)">Remover</button>
-            </td>
-        </tr>
-    </table>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--9-col">
+        <a ng-href="#/contato" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Novo Contato</a>
+    </div>
+    <div class="mdl-cell mdl-cell--3-col">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" id="filtro" ng-model="filtro" type="search">
+            <label class="mdl-textfield__label" for="filtro">Filtro</label>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col table-lista-contatos">
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">NOME</th>
+                    <th class="mdl-data-table__cell--non-numeric">E-MAIL</th>
+                    <th class="mdl-data-table__cell--non-numeric">Emergência</th>
+                    <th class="text-center">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contato in contatos | filter: filtro">
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        {{contato.email}}
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        {{contato.emergencia.nome}}
+                    </td>
+                    <td class="text-center">
+                        <button class="mdl-button mdl-js-button mdl-button--colored" ng-click="remove(contato)">Remover</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <p ng-show="contatos.length">
+                Total de contatos cadastrados: {{contatos.length}}
+            </p>
+            <p ng-hide="contatos.length">
+                Não há contatos cadastrados.
+            </p>
+        </div>
+    </div>
 </div>

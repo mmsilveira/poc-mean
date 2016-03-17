@@ -1,25 +1,44 @@
 <!-- public/index.html -->
 <!DOCTYPE html>
-<html ng-app="contatooh">
+<html>
     <head>
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta charset="utf-8">
         <title>Bem vindo ao Contatooh</title>
 
         <!-- build:css css/index.min.css -->
-        <link rel="stylesheet" href="vendor/material-design-lite/material.min.css">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.teal-orange.min.css" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/vendor/angular-material/angular-material.css">
+        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/app.css">
         <!-- endbuild -->
     </head>
-    <body class="container">
-        <a href="/logout" ng-hide="true">Logout</a>
-        <div ng-view></div>
+    <body ng-app="contatooh" layout="column">
+        <!-- <a href="/logout" ng-hide="true">Logout</a> -->
+        <md-toolbar layout="row">
+            <md-button class="menu" ng-click="toggleList()">
+                <md-icon aria-label="menu" md-font-icon="fa fa-align-justify fa-2x"></md-icon>
+            </md-button>
+            <h3>Contatooh</h3>
+        </md-toolbar>
+
+        <div class="container" layout="row" flex>
+            <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp">
+
+            </md-sidenav>
+            <md-content id="content" flex>
+                <div ng-view></div>
+            </md-content>
+        </div>
 
         <!-- build:js js/index.min.js -->
-        <script src="vendor/material-design-lite/material.min.js"></script>
         <script src="vendor/angular/angular.js"></script>
         <script src="vendor/angular-route/angular-route.js"></script>
         <script src="vendor/angular-resource/angular-resource.js"></script>
+        <script src="vendor/angular-aria/angular-aria.js"></script>
+        <script src="vendor/angular-animate/angular-animate.js"></script>
+        <script src="vendor/angular-material/angular-material.js"></script>
         <script src="js/main.js"></script>
         <script src="js/controllers/ContatosController.js"></script>
         <script src="js/controllers/ContatoController.js"></script>

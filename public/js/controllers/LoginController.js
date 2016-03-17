@@ -7,6 +7,10 @@ function($http, $scope, $routeParams, $location, Login) {
         password: ""
     };
 
+    $scope.toggleList = function() {
+        console.log('oi');
+    };
+
     $scope.login = function() {
         $http.post('/login', $scope.model)
         .then(function(res) {

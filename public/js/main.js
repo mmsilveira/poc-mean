@@ -1,4 +1,4 @@
-angular.module('contatooh', ['ngRoute', 'ngResource'])
+angular.module('contatooh', ['ngRoute', 'ngResource', 'ngMaterial'])
 .config(function($routeProvider, $httpProvider) {
 
     $httpProvider.interceptors.push('meuInterceptor');
@@ -21,4 +21,9 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
         templateUrl: 'partials/login.html',
         controller: 'LoginController'
     });
-});
+})
+.controller('MainController', ['$scope', function($scope) {
+    $scope.toggleList = function() {
+        console.log('oi');
+    };
+}]);
