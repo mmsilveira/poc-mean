@@ -1,51 +1,49 @@
 <!-- public/index.html -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-        <meta charset="utf-8">
-        <title>Bem vindo ao Contatooh</title>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8">
+    <title>Bem vindo ao Contatooh</title>
 
-        <!-- build:css css/index.min.css -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/vendor/angular-material/angular-material.css">
-        <link rel="stylesheet" href="css/login.css">
-        <link rel="stylesheet" href="css/app.css">
-        <!-- endbuild -->
-    </head>
-    <body ng-app="contatooh" layout="column">
-        <!-- <a href="/logout" ng-hide="true">Logout</a> -->
-        <md-toolbar layout="row">
-            <md-button class="menu" ng-click="toggleList()">
-                <md-icon aria-label="menu" md-font-icon="fa fa-align-justify fa-2x"></md-icon>
-            </md-button>
-            <h3>Contatooh</h3>
-        </md-toolbar>
+    <!-- build:css css/index.min.css -->
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="app.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="app" layout="column">
 
-        <div class="container" layout="row" flex>
-            <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp">
+    <!-- <section class="app-header clearfix" ui-view="app-header"></section>
+	<section class="app-sidebar" ui-view="app-sidebar"></section> -->
 
-            </md-sidenav>
-            <md-content id="content" flex>
-                <div ng-view></div>
-            </md-content>
-        </div>
+    <md-toolbar class="app-header" ui-view="app-header" layout="row"></md-toolbar>
+    <div class="container" layout="row" flex>
+        <md-sidenav class="app-sidebar" ui-view="app-sidebar" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp"></md-sidenav>
+        <md-content class="app-body" ui-view="app-body" id="app-body" flex></md-content>
+    </div>
 
-        <!-- build:js js/index.min.js -->
-        <script src="vendor/angular/angular.js"></script>
-        <script src="vendor/angular-route/angular-route.js"></script>
-        <script src="vendor/angular-resource/angular-resource.js"></script>
-        <script src="vendor/angular-aria/angular-aria.js"></script>
-        <script src="vendor/angular-animate/angular-animate.js"></script>
-        <script src="vendor/angular-material/angular-material.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/controllers/ContatosController.js"></script>
-        <script src="js/controllers/ContatoController.js"></script>
-        <script src="js/controllers/LoginController.js"></script>
-        <script src="js/services/ContatoService.js"></script>
-        <script src="js/services/LoginService.js"></script>
-        <script src="js/services/InterceptorService.js"></script>
-        <!-- endbuild -->
-    </body>
+    <!-- build:js js/index.min.js -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-material/angular-material.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="app/template/header/controllers/header.controller.js"></script>
+    <script src="app/template/sidebar/controllers/sidebar.controller.js"></script>
+    <script src="app/template/content/controllers/content.controller.js"></script>
+    <script src="app/modules/contatooh/contato.module.js"></script>
+    <script src="app/modules/contatooh/controllers/contatos.controller.js"></script>
+    <script src="app/modules/login/login.module.js"></script>
+    <script src="app/modules/contatooh/controllers/contato.controller.js"></script>
+    <script src="app/modules/login/controllers/login.controller.js"></script>
+    <script src="app/shared/services/contato.service.js"></script>
+    <script src="app/shared/services/login.service.js"></script>
+    <script src="app/shared/services/interceptor.service.js"></script>
+    <!-- endbuild -->
+</body>
 </html>
