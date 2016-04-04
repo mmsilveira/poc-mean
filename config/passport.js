@@ -28,6 +28,7 @@ module.exports = function() {
             console.log('===== LocalStrategy');
 
             Usuario.findOne({ 'email' :  email }, function(err, user) {
+                console.log(user);
                 if (err)
                 return done(err);
 
