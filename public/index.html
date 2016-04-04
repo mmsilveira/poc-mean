@@ -1,36 +1,55 @@
 <!-- public/index.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta charset="utf-8">
     <title>Bem vindo ao Contatooh</title>
 
     <!-- build:css css/index.min.css -->
-    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"> -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="vendor/material-design-lite/material.min.css">
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/template/sidebar.css">
     <link rel="stylesheet" href="app.css">
     <!-- endbuild -->
 </head>
+
 <body ng-app="app" layout="column">
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="app-header" ui-view="app-header"></div>
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <div class="app-sidebar" ui-view="app-sidebar"></div>
+        </div>
+
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="app-body" ui-view="app-body"></div>
+            </div>
+        </main>
+    </div>
 
     <!-- <section class="app-header clearfix" ui-view="app-header"></section>
 	<section class="app-sidebar" ui-view="app-sidebar"></section> -->
 
-    <md-toolbar class="app-header" ui-view="app-header" layout="row"></md-toolbar>
+
     <div class="container" layout="row" flex>
         <md-sidenav class="app-sidebar" ui-view="app-sidebar" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp"></md-sidenav>
-        <md-content class="app-body" ui-view="app-body" id="app-body" flex></md-content>
+
     </div>
 
     <!-- build:js js/index.min.js -->
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
-    <script src="vendor/angular-aria/angular-aria.js"></script>
-    <script src="vendor/angular-animate/angular-animate.js"></script>
-    <script src="vendor/angular-material/angular-material.js"></script>
+    <script src="vendor/material-design-lite/material.min.js"></script>
+    <script src="vendor/angular-material-design-lite/dist/angular-material-design-lite.min.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
     <script src="app/template/header/controllers/header.controller.js"></script>
@@ -46,4 +65,5 @@
     <script src="app/shared/services/interceptor.service.js"></script>
     <!-- endbuild -->
 </body>
+
 </html>
