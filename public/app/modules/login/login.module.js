@@ -12,7 +12,7 @@
         .state('login', {
             url: '/login',
             views: {
-                'app-content': {
+                'app-body': {
                     templateUrl: LOGIN_PATH.DIR + 'login.html',
                     controller: 'LoginController',
                     controllerAs: 'vm'

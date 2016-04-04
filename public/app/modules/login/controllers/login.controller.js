@@ -4,9 +4,9 @@
     angular.module('app.login')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$http', '$scope', '$routeParams', '$location', 'Login'];
+    LoginController.$inject = ['$http', '$scope', '$location', 'Login'];
 
-    function LoginController($http, $scope, $routeParams, $location, Login) {
+    function LoginController($http, $scope, $location, Login) {
 
         $scope.model = {
             email: "",

@@ -19,31 +19,8 @@
 </head>
 
 <body ng-app="app" layout="column">
-    <!-- Always shows a header, even in smaller screens. -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="app-header" ui-view="app-header"></div>
-        </header>
 
-        <div class="mdl-layout__drawer">
-            <div class="app-sidebar" ui-view="app-sidebar"></div>
-        </div>
-
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <div class="app-body" ui-view="app-body"></div>
-            </div>
-        </main>
-    </div>
-
-    <!-- <section class="app-header clearfix" ui-view="app-header"></section>
-	<section class="app-sidebar" ui-view="app-sidebar"></section> -->
-
-
-    <div class="container" layout="row" flex>
-        <md-sidenav class="app-sidebar" ui-view="app-sidebar" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp"></md-sidenav>
-
-    </div>
+    <div class="app-body" ui-view="app-body"></div>
 
     <!-- build:js js/index.min.js -->
     <script src="vendor/angular/angular.js"></script>
@@ -51,14 +28,15 @@
     <script src="vendor/material-design-lite/material.min.js"></script>
     <script src="vendor/angular-material-design-lite/dist/angular-material-design-lite.min.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+
     <script src="app.js"></script>
-    <script src="app/template/header/controllers/header.controller.js"></script>
-    <script src="app/template/sidebar/controllers/sidebar.controller.js"></script>
-    <script src="app/template/content/controllers/content.controller.js"></script>
+    <script src="app/template/app/header/controllers/header.controller.js"></script>
+    <script src="app/template/app/sidebar/controllers/sidebar.controller.js"></script>
+    <script src="app/template/app/content/controllers/content.controller.js"></script>
     <script src="app/modules/contatooh/contato.module.js"></script>
     <script src="app/modules/contatooh/controllers/contatos.controller.js"></script>
-    <script src="app/modules/login/login.module.js"></script>
     <script src="app/modules/contatooh/controllers/contato.controller.js"></script>
+    <script src="app/modules/login/login.module.js"></script>
     <script src="app/modules/login/controllers/login.controller.js"></script>
     <script src="app/shared/services/contato.service.js"></script>
     <script src="app/shared/services/login.service.js"></script>

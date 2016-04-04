@@ -1,0 +1,19 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="app-header" ui-view="app-header"></div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+        <div class="app-sidebar" ui-view="app-sidebar"></div>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="app-main" ui-view="app-main"></div>
+        </div>
+    </main>
+</div>
+
+<!-- <div class="container" layout="row" flex>
+    <md-sidenav class="app-sidebar" ui-view="app-sidebar" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp"></md-sidenav>
+</div> -->

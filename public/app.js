@@ -29,22 +29,30 @@ function config($httpProvider, $urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/contatos');
 
     $stateProvider
-        .state('template', {
+        .state('template-base', {
+            views: {
+                'app-body': {
+                    templateUrl: 'app/template/app/app-body.html'
+                }
+            }
+        })
+        .state('template-app', {
             views: {
                 'app-header': {
-                    templateUrl: 'app/template/header/views/header.html',
+                    templateUrl: 'app/template/app/header/views/header.html',
                     controller: 'HeaderController as vm'
                 },
                 'app-sidebar': {
-                    templateUrl: 'app/template/sidebar/views/sidebar.html',
+                    templateUrl: 'app/template/app/sidebar/views/sidebar.html',
                     controller: 'SidebarController as vm'
                 },
-                'app-body': {
-                    templateUrl: 'app/template/content/views/content.html',
-                    controller: 'ContentController as vm',
+                'app-main': {
+                    templateUrl: 'app/template/app/main/views/main.html',
+                    controller: 'MainController as vm',
                     reloadOnSearch: false
                 }
-            }
+            },
+            parent: 'template-base'
         });
 
 }

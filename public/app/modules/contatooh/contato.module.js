@@ -18,7 +18,7 @@
                     controllerAs: 'vm'
                 }
             },
-            parent: 'template'
+            parent: 'template-app'
         })
         .state('contato.edit', {
             url: '/contato/:contatoId',
@@ -29,7 +29,7 @@
                     controllerAs: 'vm'
                 }
             },
-            parent: 'template'
+            parent: 'template-app'
         })
         .state('contato.new', {
             url: '/contato',
@@ -40,7 +40,7 @@
                     controllerAs: 'vm'
                 }
             },
-            parent: 'template'
+            parent: 'template-app'
         });
     }
 
