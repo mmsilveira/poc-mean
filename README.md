@@ -1,5 +1,9 @@
-* Lembretes:
-    * ui-router no logar de ngRouter
-    * $http no lugar de resource
-    * passport.js com autenticação basic-http
-    * materil no lugar do bootstrap
+POC MEAN
+===
+
+Experimental project using the stack MEAN.
+
+[M]ongodb  
+[E]xpress  
+[A]ngular  
+[N]odejs
