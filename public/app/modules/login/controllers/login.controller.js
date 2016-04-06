@@ -4,23 +4,35 @@
     angular.module('app.login')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$http', '$scope', '$location', 'Login'];
+    LoginController.$inject = ['$http', '$state', '$location', 'Login'];
 
-    function LoginController($http, $scope, $location, Login) {
+    function LoginController($http, $state, $location, Login) {
+        var vm = this;
 
-        $scope.model = {
+        vm.model = {
             email: "",
             password: ""
         };
 
-        $scope.toggleList = function() {
+        vm.toggleList = function() {
             console.log('oi');
         };
 
-        $scope.login = function() {
-            $http.post('/login', $scope.model)
+        vm.login = function() {
+            $http.post('/login', vm.model)
             .then(function(res) {
-                // $scope.email = res;
+                // vm.email = res;
+                $location.path('/contatos');
+            })
+            .catch(function(erro) {
+                console.log(erro);
+            });
+        };
+
+        vm.signup = function() {
+            $http.post('/signup', vm.model)
+            .then(function(res) {
+                // vm.email = res;
                 $location.path('/contatos');
             })
             .catch(function(erro) {

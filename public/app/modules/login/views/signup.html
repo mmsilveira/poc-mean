@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center center" style="width: 100%; height: 100%;">
     <div class="login-card">
-        <form ng-submit="vm.login()">
+        <form ng-submit="vm.signup()">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" id="email" type="text" name="email" ng-model="vm.model.email">
                 <label class="mdl-textfield__label" for="email">Email</label>
@@ -9,10 +9,12 @@
                 <input class="mdl-textfield__input" id="password" type="password" name="password" ng-model="vm.model.password">
                 <label class="mdl-textfield__label" for="password">Password</label>
             </div>
-
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" id="confirmPassword" type="password" name="confirmPassword" ng-model="vm.model.confirmPassword">
+                <label class="mdl-textfield__label" for="confirmPassword">Confirm password</label>
+            </div>
             <p>
-                <button id="entrar" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Log in</button>
-                <button id="entrar" type="submit" class="mdl-button mdl-js-button mdl-button--colored" ui-sref="signup">Sign up</button>
+                <button id="signup" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign up</button>
             </p>
         </form>
     </div>

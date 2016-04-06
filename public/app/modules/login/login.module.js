@@ -18,6 +18,16 @@
                     controllerAs: 'vm'
                 }
             }
+        })
+        .state('signup', {
+            url: '/signup',
+            views: {
+                'app-body': {
+                    templateUrl: LOGIN_PATH.DIR + 'signup.html',
+                    controller: 'LoginController',
+                    controllerAs: 'vm'
+                }
+            }
         });
     }
 
