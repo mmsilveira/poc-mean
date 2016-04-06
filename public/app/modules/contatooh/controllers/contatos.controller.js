@@ -4,21 +4,23 @@
     angular.module('app.contato')
     .controller('ContatosController', ContatosController);
 
-    ContatosController.$inject = ['$scope', 'Contato'];
+    ContatosController.$inject = ['$state', 'Contato'];
 
-    function ContatosController($scope, Contato) {
-        $scope.filtro = '';
-        $scope.contatos = [];
-        $scope.mensagem = {texto: ''};
+    function ContatosController($state, Contato) {
+        var vm = this;
+
+        vm.filtro = '';
+        vm.contatos = [];
+        vm.mensagem = {texto: ''};
 
         function buscaContatos() {
             Contato.query(
                 function(contatos) {
-                    $scope.contatos = contatos;
+                    vm.contatos = contatos;
                 },
                 function(erro) {
                     console.log(erro);
-                    $scope.mesagem = {
+                    vm.mesagem = {
                         texto: 'Não foi possivel obter a lista de contatos.'
                     };
                 }
@@ -26,12 +28,12 @@
         }
         buscaContatos();
 
-        $scope.remove = function(contato) {
+        vm.remove = function(contato) {
             Contato.delete({id: contato._id},
                 buscaContatos,
                 function(erro) {
                     console.log(erro);
-                    $scope.mesagem = {
+                    vm.mesagem = {
                         texto: 'Não foi possivel remover o contato.'
                     };
                 }

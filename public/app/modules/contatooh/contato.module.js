@@ -20,8 +20,8 @@
             },
             parent: 'template-app'
         })
-        .state('contato.edit', {
-            url: '/contato/:contatoId',
+        .state('contatos.new', {
+            url: '/contato',
             views: {
                 'app-content': {
                     templateUrl: CONTATOOH_PATH.DIR + 'contato.html',
@@ -31,8 +31,8 @@
             },
             parent: 'template-app'
         })
-        .state('contato.new', {
-            url: '/contato',
+        .state('contatos.edit', {
+            url: '/contato/:contatoId',
             views: {
                 'app-content': {
                     templateUrl: CONTATOOH_PATH.DIR + 'contato.html',

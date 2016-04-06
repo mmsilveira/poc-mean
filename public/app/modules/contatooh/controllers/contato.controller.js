@@ -4,39 +4,41 @@
     angular.module('app.contato')
     .controller('ContatoController', ContatoController);
 
-    ContatoController.$inject = ['$scope', '$routeParams', 'Contato'];
+    ContatoController.$inject = ['$state', '$stateParams', 'Contato'];
 
-    function ContatoController($scope, $routeParams, Contato) {
+    function ContatoController($state, $stateParams, Contato) {
+        var vm = this;
 
-        if ($routeParams.contatoId) {
-            Contato.get({id: $routeParams.contatoId},
+        if ($stateParams.contatoId) {
+            Contato.get({id: $stateParams.contatoId},
                 function(contato) {
-                    $scope.contato = contato;
+                    vm.contato = contato;
                 },
                 function(erro) {
-                    $scope.mensagem = {
+                    vm.mensagem = {
                         texto: 'Não foi possível obter o contato.'
                     };
                     console.log(erro);
                 }
             );
         } else {
-            $scope.contato = new Contato();
+            vm.contato = new Contato();
         }
 
-        $scope.salva = function() {
-            $scope.contato.$save()
+        vm.salva = function() {
+            vm.contato.$save()
             .then(function() {
-                $scope.mesagem = {texto: 'Salvo com sucesso.'};
-                $scope.contato = new Contato();
+                vm.mesagem = {texto: 'Salvo com sucesso.'};
+                vm.contato = new Contato();
+                $state.go('contatos');
             })
             .catch(function(erro) {
-                $scope.mensagem = {texto: 'Não foi possível salvar.'};
+                vm.mensagem = {texto: 'Não foi possível salvar.'};
             });
         };
 
         Contato.query(function(contatos) {
-            $scope.contatos = contatos;
+            vm.contatos = contatos;
         });
     }
 

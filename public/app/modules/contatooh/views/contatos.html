@@ -1,17 +1,16 @@
-<!-- public/partials/contatos.html -->
 <div>
     <h4 class="mdl-typography--display-1">Bem vindo ao Contatooh</h4>
 </div>
 <p ng-show="mensagem.texto">
-    {{mensagem.texto}}
+    {{vm.mensagem.texto}}
 </p>
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--9-col">
-        <a ng-href="#/contato" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Novo Contato</a>
+        <a ui-sref="contatos.new" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Novo Contato</a>
     </div>
     <div class="mdl-cell mdl-cell--3-col">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" id="filtro" ng-model="filtro" type="search">
+            <input class="mdl-textfield__input" id="filtro" ng-model="vm.filtro" type="search">
             <label class="mdl-textfield__label" for="filtro">Filtro</label>
         </div>
     </div>
@@ -26,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="contato in contatos | filter: filtro">
+                <tr ng-repeat="contato in vm.contatos | filter: vm.filtro">
                     <td class="mdl-data-table__cell--non-numeric">
                         <a ng-href="#/contato/{{contato._id}}">{{contato.nome}}</a>
                     </td>
@@ -37,17 +36,17 @@
                         {{contato.emergencia.nome}}
                     </td>
                     <td class="text-center">
-                        <button class="mdl-button mdl-js-button mdl-button--colored" ng-click="remove(contato)">Remover</button>
+                        <button class="mdl-button mdl-js-button mdl-button--colored" ng-click="vm.remove(contato)">Remover</button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div>
-            <p ng-show="contatos.length">
-                Total de contatos cadastrados: {{contatos.length}}
+            <p ng-show="vm.contatos.length">
+                Total de contatos cadastrados: {{vm.contatos.length}}
             </p>
-            <p ng-hide="contatos.length">
+            <p ng-hide="vm.contatos.length">
                 Não há contatos cadastrados.
             </p>
         </div>

@@ -2,26 +2,26 @@
     <h4 class="mdl-typography--display-1">Contato</h4>
 </div>
 <p ng-show="mensagem.texto">
-    {{mensagem.texto}}
+    {{vm.mensagem.texto}}
 </p>
 
 <div class="form-contato-card mdl-card mdl-shadow--2dp">
-    <form ng-submit="salva()">
+    <form ng-submit="vm.salva()">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input type="text" class="mdl-textfield__input" id="nome" name="nome" ng-model="contato.nome" required>
+            <input type="text" class="mdl-textfield__input" id="nome" name="nome" ng-model="vm.contato.nome" required>
             <label class="mdl-textfield__label" for="nome">Nome completo</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input type="email" class="mdl-textfield__input" id="email" name="email" ng-model="contato.email" required>
+            <input type="email" class="mdl-textfield__input" id="email" name="email" ng-model="vm.contato.email" required>
             <label class="mdl-textfield__label" for="email">Email</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <select id="emergencia" class="mdl-textfield__input" name="emergencia" ng-model="contato.emergencia" ng-options="contato._id as contato.nome for contato in contatos"></select>
+            <select id="emergencia" class="mdl-textfield__input" name="emergencia" ng-model="vm.contato.emergencia" ng-options="contato._id as contato.nome for contato in vm.contatos"></select>
             <label class="mdl-textfield__label" for="emergencia">Emergência</label>
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Salvar</button>
-            <a href="#/" class="btn btn-primary">Voltar</a>
+            <a ui-sref="contatos" class="btn btn-primary">Voltar</a>
         </div>
     </form>
 </div>
