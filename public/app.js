@@ -25,7 +25,7 @@ angular.module('app', ['ui.router', 'ngResource', 'mdl', 'app.contato', 'app.log
 
 function config($httpProvider, $urlRouterProvider, $stateProvider) {
 
-    // $httpProvider.interceptors.push('loginInterceptorService');
+    $httpProvider.interceptors.push('loginInterceptorService');
     $urlRouterProvider.otherwise('/contatos');
 
     $stateProvider
