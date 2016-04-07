@@ -21,6 +21,6 @@ module.exports = function(app) {
 
     app.route('/logout').get(function(req, res) {
         req.logOut();
-        res.redirect('/');
+        res.redirect('/#/login');
     });
 };
