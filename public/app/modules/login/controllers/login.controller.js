@@ -4,9 +4,9 @@
     angular.module('app.login')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$http', '$state', '$location', 'Login'];
+    LoginController.$inject = ['$http', '$state', '$location', 'loginService'];
 
-    function LoginController($http, $state, $location, Login) {
+    function LoginController($http, $state, $location, loginService) {
         var vm = this;
 
         vm.model = {

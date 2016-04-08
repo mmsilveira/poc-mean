@@ -1,4 +1,13 @@
-angular.module('app.login')
-.factory('Login', function($resource) {
-    return $resource('/login');
-});
+(function() {
+    'use strict';
+
+    angular.module('app.login')
+        .factory('loginService', loginService);
+
+    loginService.$inject = ['$resource']
+
+    function loginService($resource) {
+        return $resource('/login');
+    }
+
+})();

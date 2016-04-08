@@ -4,13 +4,13 @@
     angular.module('app.contato')
     .controller('ContatoController', ContatoController);
 
-    ContatoController.$inject = ['$state', '$stateParams', 'Contato'];
+    ContatoController.$inject = ['$state', '$stateParams', 'contatoService'];
 
-    function ContatoController($state, $stateParams, Contato) {
+    function ContatoController($state, $stateParams, contatoService) {
         var vm = this;
 
         if ($stateParams.contatoId) {
-            Contato.get({id: $stateParams.contatoId},
+            contatoService.Contato.get({id: $stateParams.contatoId},
                 function(contato) {
                     vm.contato = contato;
                 },
@@ -22,14 +22,14 @@
                 }
             );
         } else {
-            vm.contato = new Contato();
+            vm.contato = new contatoService.Contato();
         }
 
         vm.salva = function() {
             vm.contato.$save()
             .then(function() {
                 vm.mesagem = {texto: 'Salvo com sucesso.'};
-                vm.contato = new Contato();
+                vm.contato = new contatoService.Contato();
                 $state.go('contatos');
             })
             .catch(function(erro) {
@@ -37,7 +37,7 @@
             });
         };
 
-        Contato.query(function(contatos) {
+        contatoService.Contato.query(function(contatos) {
             vm.contatos = contatos;
         });
     }

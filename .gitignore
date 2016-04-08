@@ -1,6 +1,8 @@
 node_modules
 public/vendor
 dist
+build
+bower_components
 .tmp
 
 .sublime-project

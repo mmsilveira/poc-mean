@@ -4,9 +4,9 @@
     angular.module('app.contato')
     .controller('ContatosController', ContatosController);
 
-    ContatosController.$inject = ['$state', 'Contato'];
+    ContatosController.$inject = ['$state', 'contatoService'];
 
-    function ContatosController($state, Contato) {
+    function ContatosController($state, contatoService) {
         var vm = this;
 
         vm.filtro = '';
@@ -14,7 +14,7 @@
         vm.mensagem = {texto: ''};
 
         function buscaContatos() {
-            Contato.query(
+            contatoService.Contato.query(
                 function(contatos) {
                     vm.contatos = contatos;
                 },
@@ -29,7 +29,7 @@
         buscaContatos();
 
         vm.remove = function(contato) {
-            Contato.delete({id: contato._id},
+            contatoService.Contato.delete({id: contato._id},
                 buscaContatos,
                 function(erro) {
                     console.log(erro);
