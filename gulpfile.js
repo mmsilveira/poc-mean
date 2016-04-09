@@ -8,12 +8,72 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     inject = require('gulp-inject'),
     eventStream = require('event-stream'),
-    angularFileSort = require('gulp-angular-filesort');
+    angularFileSort = require('gulp-angular-filesort'),
+    nodemon = require('gulp-nodemon');
 
+/*********************
+ * PROD
+ *********************/
 gulp.task('default', function(callback) {
-    runSequence('build', callback);
+    runSequence('build-dev', callback);
 });
 
+gulp.task('build-dev', function(callback) {
+    runSequence('clean-dev', 'copy-build-dev', 'index-dev', callback);
+});
+
+gulp.task('serve', function() {
+    nodemon({
+        script: 'server.js',
+        ext: 'js css html',
+        env: {
+            'NODE_ENV': 'development'
+        }
+    });
+});
+
+gulp.task('clean-dev', function() {
+    return del(['./public/vendor']);
+});
+
+gulp.task('copy-build-dev', ['copy-vendor-dev'])
+
+gulp.task('copy-vendor-dev', function() {
+    gulp.src(bowerFiles(/.js$/))
+        .pipe(gulp.dest('./public/vendor'));
+
+    gulp.src(bowerFiles(/.css$/))
+        .pipe(gulp.dest('./public/vendor'));
+});
+
+gulp.task('index-dev', function() {
+    gulp.src('./public/index.html')
+        .pipe(inject(gulp.src('./public/vendor/**/*.js')
+            .pipe(angularFileSort()), {
+                ignorePath: 'public',
+                addRootSlash: false,
+                name: 'vendor'
+            }))
+        .pipe(inject(gulp.src('./public/vendor/**/*.css'), {
+            ignorePath: 'public',
+            addRootSlash: false,
+            name: 'vendor'
+        }))
+        .pipe(inject(gulp.src(['./public/**/*.js', '!./public/vendor/**'])
+            .pipe(angularFileSort()), {
+                ignorePath: 'public',
+                addRootSlash: false
+            }))
+        .pipe(inject(gulp.src(['./public/**/*.css', '!./public/vendor/**']), {
+            ignorePath: 'public',
+            addRootSlash: false
+        }))
+        .pipe(gulp.dest('./public'));
+});
+
+/*********************
+ * PROD
+ *********************/
 gulp.task('build', function(callback) {
     runSequence('clean', 'copy-build-back', 'copy-build-front', 'index', callback);
 });
@@ -114,7 +174,11 @@ gulp.task('index', function() {
             ignorePath: 'build/public',
             addRootSlash: false
         }))
-        .pipe(gulp.dest('./build/public'))
+        .pipe(gulp.dest('./build/public'));
 });
-var vendorFiles = gulp.src(['./build/public/vendor.min.js', './build/public/vendor.min.css'], {read: false});
-var appFiles = gulp.src(['./build/public/app.min.js', './build/public/app.min.css'], {read: false});
+var vendorFiles = gulp.src(['./build/public/vendor.min.js', './build/public/vendor.min.css'], {
+    read: false
+});
+var appFiles = gulp.src(['./build/public/app.min.js', './build/public/app.min.css'], {
+    read: false
+});
