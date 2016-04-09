@@ -4,7 +4,7 @@
     angular.module('app.login')
         .factory('loginService', loginService);
 
-    loginService.$inject = ['$resource']
+    loginService.$inject = ['$resource'];
 
     function loginService($resource) {
         return $resource('/login');

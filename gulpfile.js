@@ -9,13 +9,14 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     eventStream = require('event-stream'),
     angularFileSort = require('gulp-angular-filesort'),
-    nodemon = require('gulp-nodemon');
+    nodemon = require('gulp-nodemon'),
+    jshint = require('gulp-jshint');
 
 /*********************
- * PROD
+ * DEV
  *********************/
 gulp.task('default', function(callback) {
-    runSequence('build-dev', callback);
+    runSequence('build-dev', 'serve', callback);
 });
 
 gulp.task('build-dev', function(callback) {
@@ -28,8 +29,15 @@ gulp.task('serve', function() {
         ext: 'js css html',
         env: {
             'NODE_ENV': 'development'
-        }
+        },
+        tasks: ['lint']
     });
+});
+
+gulp.task('lint', function(callback) {
+  return gulp.src(['./public/**/*.js', '!./public/vendor/**'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 gulp.task('clean-dev', function() {
@@ -75,7 +83,7 @@ gulp.task('index-dev', function() {
  * PROD
  *********************/
 gulp.task('build', function(callback) {
-    runSequence('clean', 'copy-build-back', 'copy-build-front', 'index', callback);
+    runSequence('clean', 'lint', 'copy-build-back', 'copy-build-front', 'index', callback);
 });
 
 gulp.task('clean', function() {
