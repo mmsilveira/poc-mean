@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ngResource', 'mdl', 'app.contato', 'app.login'])
+angular.module('app', ['ui.router', 'oitozero.ngSweetAlert', 'ngResource', 'mdl', 'app.contato', 'app.login'])
     .config(['$httpProvider', '$urlRouterProvider', '$stateProvider', config])
     .run(function() {
         var mdlUpgradeDom = false;

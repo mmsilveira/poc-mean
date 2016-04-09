@@ -2,16 +2,17 @@
     'use strict';
 
     angular.module('app.login')
-    .controller('LoginController', LoginController);
+        .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$http', '$state', '$location', 'loginService'];
+    LoginController.$inject = ['$http', '$state', '$location', 'loginService', 'SweetAlert'];
 
-    function LoginController($http, $state, $location, loginService) {
+    function LoginController($http, $state, $location, loginService, SweetAlert) {
         var vm = this;
 
         vm.model = {
             email: "",
-            password: ""
+            password: "",
+            confirmPassword: ""
         };
 
         vm.toggleList = function() {
@@ -20,24 +21,34 @@
 
         vm.login = function() {
             $http.post('/login', vm.model)
-            .then(function(res) {
-                // vm.email = res;
-                $location.path('/contatos');
-            })
-            .catch(function(erro) {
-                console.log(erro);
-            });
+                .then(function(res) {
+                    // vm.email = res;
+                    $location.path('/contatos');
+                })
+                .catch(function(erro) {
+                    console.log(erro);
+                });
         };
 
         vm.signup = function() {
-            $http.post('/signup', vm.model)
-            .then(function(res) {
-                // vm.email = res;
-                $location.path('/contatos');
-            })
-            .catch(function(erro) {
-                console.log(erro);
-            });
+            if (vm.model.password === vm.model.confirmPassword) {
+                $http.post('/signup', vm.model)
+                    .then(function(res) {
+                        // vm.email = res;
+                        $location.path('/contatos');
+                    })
+                    .catch(function(erro) {
+                        console.log(erro);
+                    });
+            } else {
+                SweetAlert.swal({
+                    title: 'Opss!',
+                    text: 'Confirmação do password não confere.',
+                    type: 'error',
+                    confirmButtonText: 'Entendi',
+                    closeOnConfirm: true
+                });
+            }
         };
 
     }
